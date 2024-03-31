@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+    <title>Document</title>
+    <style>
+        body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:  rgb(44, 43, 45);
+    color: white;
+    
+}
+
+.box
+{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    padding: 30px 50px;
+    border-radius: 30px;
+    background:  rgb(44, 43, 45);
+    box-shadow : 25px 25px 75px rgba(0,0,0,0.5), 10px 10px 70px rgba(0,0,0,0.5) ,
+    inset 5px 5px 10px rgba(0,0,0,0.5);
+   
+}
+.box h1{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.box button{
+    padding: 9px ;
+    margin-left: 5px;
+width: 25%;
+background-color: rgb(135, 114, 225);
+   border-radius: 2%;
+}
+.box .content
+{
+    display: flex;
+    
+    justify-content: space-between;
+   padding-top: 10%;
+}
+    </style>
+    
+</head>
+9<body >
+   
+        <div class="box">
+            <h1>Age Calculator</h1>
+            <label for="birthday" style="font-size: 1.5rem; ">Date of Birth</label>
+            <input type="date" id="birthday" name="birthday" style="padding: 6px; width: 40%;">
+        
+            <button onclick="calculateAge()">Calculate</button>
+            <div class="content">
+                <div class="year">
+                    <p id="year"></p>
+                    <h3>Year</h3>
+                </div>
+                <div class="month">
+                    <p id="month"></p>
+                    <h3>Month</h3>
+                </div>
+                <div class="day">
+                    <p id="day"></p>
+                    <h3>Day</h3>
+                </div>
+            </div>
+        </div>
+        
+ <script>
+      function calculateAge() {
+            const inputDate = document.getElementById("birthday").value;
+            const birthDate = new Date(inputDate);
+            const currentDate = new Date();
+            const ageInMilliseconds = currentDate - birthDate;
+            const ageInYears = Math.floor(ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+            const remainingMilliseconds = ageInMilliseconds % (1000 * 60 * 60 * 24 * 365.25);
+            const ageInMonths = Math.floor(remainingMilliseconds / (1000 * 60 * 60 * 24 * 30.4375));
+            const remainingDays = Math.floor((remainingMilliseconds % (1000 * 60 * 60 * 24 * 30.4375)) / (1000 * 60 * 60 * 24));
+
+            document.getElementById("year").innerText = ageInYears;
+            document.getElementById("month").innerText = ageInMonths;
+            document.getElementById("day").innerText = remainingDays;
+        }
+        
+ </script>
+</body>
+</html>
